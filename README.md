@@ -37,7 +37,7 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
    Install server dependencies:
    ```bash
    npm install
-``
+```
 
    Install client dependencies:
   ```bash
