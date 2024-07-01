@@ -30,12 +30,18 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
    ```bash
    git clone https://github.com/your-username/your-repository.git
    cd your-repository
+   ```
    
 2. **Install dependencies**
 
--Install server dependencies:
+   Install server dependencies:
    ```bash
    npm install
+``
 
-
+   Install client dependencies:
+  ```bash
+   cd client
+   npm install
+```
 
