@@ -147,6 +147,7 @@ import Papa from "papaparse";
 export default function HomePage() {
   const [companyData, setCompanyData] = useState([]);
   const [contactData, setContactData] = useState([]);
+  const [success, setSuccess] = useState([]);
 
   const handleFileChange = (e, type) => {
     const file = e.target.files[0];
@@ -200,7 +201,9 @@ export default function HomePage() {
 
       // Handle success responses as needed
       console.log("Upload successful");
+      alert("Data uploaded in db successfully");
     } catch (error) {
+      alert("Data is Ivalid to upload");
       console.error("Error uploading data:", error);
       // Handle error responses
     }
@@ -255,14 +258,14 @@ export default function HomePage() {
             <tbody>
               {companyData.map((row, index) => (
                 <tr key={index}>
-                  <td>{row["Company Name"]}</td>
-                  <td>{row["Company Address"]}</td>
-                  <td>{row["Company Phone"]}</td>
-                  <td>{row["Company Email"]}</td>
-                  <td>{row["Company Website"]}</td>
-                  <td>{row["Number of Employees"]}</td>
-                  <td>{row["Founded Date"]}</td>
-                  <td>{row["Industry Type"]}</td>
+                  <td>{row["companyName"]}</td>
+                  <td>{row["companyAddress"]}</td>
+                  <td>{row["companyPhone"]}</td>
+                  <td>{row["companyEmail"]}</td>
+                  <td>{row["companyWebsite"]}</td>
+                  <td>{row["numberOfEmployees"]}</td>
+                  <td>{row["foundedDate"]}</td>
+                  <td>{row["industryType"]}</td>
                 </tr>
               ))}
             </tbody>
@@ -282,11 +285,11 @@ export default function HomePage() {
             <tbody>
               {contactData.map((row, index) => (
                 <tr key={index}>
-                  <td>{row["Contact Name"]}</td>
-                  <td>{row["Contact Email"]}</td>
-                  <td>{row["Contact Phone"]}</td>
-                  <td>{row["Date of Birth"]}</td>
-                  <td>{row["Contact Type"]}</td>
+                  <td>{row["contactName"]}</td>
+                  <td>{row["contactEmail"]}</td>
+                  <td>{row["contactPhone"]}</td>
+                  <td>{row["dateOfBirth"]}</td>
+                  <td>{row["contactType"]}</td>
                 </tr>
               ))}
             </tbody>
