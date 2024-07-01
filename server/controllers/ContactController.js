@@ -17,6 +17,8 @@ module.exports.addContacts = async (req, res, next) => {
       return res.status(400).json({ msg: "Invalid data format. Expected an array of contacts." });
     }
 
+    // first drop data then create so there will be no redudanat data
+    await ContactModel.collection.drop();
     const createdContacts = await ContactModel.create(updatedContacts);
 
     if (createdContacts.length > 0) {
@@ -25,8 +27,21 @@ module.exports.addContacts = async (req, res, next) => {
       return res.json({ msg: "Failed to add contacts to the database" });
     }
   } catch (ex) {
-    next(ex);
+    // Check if the error is a validation error 
+    if (ex.name === 'ValidationError') {
+      const errorMessages = Object.keys(ex.errors).map(field => ({
+        field: field,
+        message: ex.errors[field].message
+      }));
+      console.log("Validation errors:", errorMessages);
+      return res.status(400).json({ msg: "Validation error", errors: errorMessages });
+    } else {
+      // Handle other types of errors
+      console.error("Error:", ex);
+      return res.status(500).json({ msg: "Internal server error" });
+    }
   }
+  
 };
 
 module.exports.getContacts = async (req, res, next) => {
