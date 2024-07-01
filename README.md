@@ -36,12 +36,38 @@ This project is a MERN (MongoDB, Express.js, React.js, Node.js) stack applicatio
 
    Install server dependencies:
    ```bash
+   cd server
    npm install
-```
+   ```
 
    Install client dependencies:
-  ```bash
+   ```bash
    cd client
    npm install
-```
+   ```
+
+3. **Set up environment variables**
+
+   ```bash
+   PORT=3001
+   MONGODB_URI=mongodb://localhost:27017/your-database-name
+   ```
+   
+4. **Start the development server**
+
+   For Server:
+   ```bash
+   npm start
+   ```
+
+   For Client:
+   ```bash
+   npm start
+   ```
+
+5. **Access the application**
+
+   Open your browser and go to http://localhost:3000 to view the application.
+
+
 
